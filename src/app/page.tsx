@@ -5,8 +5,9 @@ import Link from "next/link";
 import { categories } from "@/data/hookingFormulas";
 
 export default function Home() {
-  const [openCategory, setOpenCategory] = useState<number | null>(null);
+  const [activeCategory, setActiveCategory] = useState(0);
   const [copiedId, setCopiedId] = useState<number | null>(null);
+  const [sidebarOpen, setSidebarOpen] = useState(false);
 
   const handleCopy = (text: string, id: number) => {
     navigator.clipboard.writeText(text);
@@ -19,184 +20,302 @@ export default function Home() {
     0
   );
 
+  const activeCat = categories[activeCategory];
+
   return (
-    <div className="min-h-screen">
-      {/* Hero */}
-      <section className="relative overflow-hidden py-20 px-4 text-center">
-        <div className="absolute inset-0 bg-gradient-to-b from-primary/10 to-transparent" />
-        <div className="relative max-w-4xl mx-auto">
-          <div className="inline-block bg-primary/20 border border-primary/30 rounded-full px-4 py-1.5 text-sm text-primary-light mb-6">
-            병원 마케팅 전문 카피라이팅 공식집
+    <div className="min-h-screen flex">
+      {/* Mobile Header */}
+      <div className="fixed top-0 left-0 right-0 bg-bg-dark/95 backdrop-blur-md border-b border-border z-50 lg:hidden">
+        <div className="flex items-center justify-between px-5 py-4">
+          <div>
+            <span className="text-primary font-bold text-sm tracking-widest">HOOKING</span>
+            <span className="text-text-muted text-sm ml-1">FORMULA</span>
           </div>
-          <h1 className="text-4xl md:text-6xl font-extrabold mb-6 leading-tight">
-            클릭을 부르는
+          <button
+            onClick={() => setSidebarOpen(!sidebarOpen)}
+            className="text-text-sub p-1 cursor-pointer"
+          >
+            <svg width="24" height="24" fill="none" stroke="currentColor" strokeWidth="1.5" viewBox="0 0 24 24">
+              {sidebarOpen ? (
+                <path strokeLinecap="round" d="M6 18L18 6M6 6l12 12" />
+              ) : (
+                <path strokeLinecap="round" d="M3.75 6.75h16.5M3.75 12h16.5M3.75 17.25h16.5" />
+              )}
+            </svg>
+          </button>
+        </div>
+      </div>
+
+      {/* Sidebar Overlay (mobile) */}
+      {sidebarOpen && (
+        <div
+          className="fixed inset-0 bg-black/60 z-40 lg:hidden"
+          onClick={() => setSidebarOpen(false)}
+        />
+      )}
+
+      {/* Left Sidebar */}
+      <aside
+        className={`fixed top-0 left-0 h-full w-72 bg-bg-sidebar border-r border-border z-50 flex flex-col transition-transform duration-300 lg:translate-x-0 lg:static lg:z-auto ${
+          sidebarOpen ? "translate-x-0" : "-translate-x-full"
+        }`}
+      >
+        {/* Logo */}
+        <div className="px-6 pt-8 pb-6 border-b border-border">
+          <div className="flex items-center gap-2 mb-1">
+            <div className="w-2 h-2 bg-primary rounded-full" />
+            <span className="text-xs font-bold tracking-[0.2em] text-text-muted uppercase">
+              Hooking Formula
+            </span>
+          </div>
+          <h1 className="text-lg font-bold leading-snug mt-3">
+            쓰레드/릴스
             <br />
-            <span className="animate-shimmer">후킹공식 {totalFormulas}가지</span>
+            <span className="text-primary">후킹 카피라이팅</span>
+            <br />
+            공식집
           </h1>
-          <p className="text-lg md:text-xl text-text-sub max-w-2xl mx-auto mb-8 leading-relaxed">
-            &quot;왜 내 광고는 클릭이 안 될까?&quot;
-            <br />
-            상위 1% 마케터만 쓰는 후킹공식을
-            <br className="md:hidden" />
-            {" "}카테고리별로 총정리했습니다.
-          </p>
-          <div className="flex flex-wrap justify-center gap-4 mb-10">
-            <div className="bg-bg-card border border-border rounded-xl px-5 py-3 text-center">
-              <div className="text-2xl font-bold text-accent">{totalFormulas}</div>
-              <div className="text-sm text-text-muted">후킹 공식</div>
-            </div>
-            <div className="bg-bg-card border border-border rounded-xl px-5 py-3 text-center">
-              <div className="text-2xl font-bold text-accent">
-                {categories.length}
-              </div>
-              <div className="text-sm text-text-muted">카테고리</div>
-            </div>
-            <div className="bg-bg-card border border-border rounded-xl px-5 py-3 text-center">
-              <div className="text-2xl font-bold text-accent">100%</div>
-              <div className="text-sm text-text-muted">실전 적용</div>
-            </div>
+          <div className="flex items-center gap-3 mt-4">
+            <span className="text-2xl font-bold text-text-main">{totalFormulas}</span>
+            <span className="text-xs text-text-muted">공식 수록</span>
           </div>
-          <a
-            href="#formulas"
-            className="inline-block bg-primary hover:bg-primary-dark text-white font-semibold px-8 py-4 rounded-xl text-lg transition-all"
-          >
-            공식 보러가기 ↓
-          </a>
         </div>
-      </section>
 
-      {/* Category Quick Nav */}
-      <section className="max-w-6xl mx-auto px-4 py-8">
-        <div className="flex flex-wrap justify-center gap-3">
+        {/* Category Nav */}
+        <nav className="flex-1 overflow-y-auto py-4 px-3">
+          <p className="text-[10px] font-bold tracking-[0.15em] text-text-muted uppercase px-3 mb-3">
+            Categories
+          </p>
           {categories.map((cat, i) => (
-            <a
-              key={i}
-              href={`#category-${i}`}
-              className="bg-bg-card border border-border rounded-lg px-4 py-2 text-sm hover:border-primary/50 hover:bg-bg-card-hover transition-all"
-            >
-              {cat.emoji} {cat.name}
-              <span className="ml-1.5 text-text-muted">
-                ({cat.formulas.length})
-              </span>
-            </a>
-          ))}
-        </div>
-      </section>
-
-      {/* Formulas */}
-      <section id="formulas" className="max-w-6xl mx-auto px-4 py-12">
-        {categories.map((cat, catIdx) => (
-          <div
-            key={catIdx}
-            id={`category-${catIdx}`}
-            className="mb-12 scroll-mt-8"
-          >
             <button
-              onClick={() =>
-                setOpenCategory(openCategory === catIdx ? null : catIdx)
-              }
-              className="w-full text-left group cursor-pointer"
+              key={i}
+              onClick={() => {
+                setActiveCategory(i);
+                setSidebarOpen(false);
+              }}
+              className={`w-full text-left px-4 py-3 rounded-lg mb-1 transition-all cursor-pointer group ${
+                activeCategory === i
+                  ? "bg-primary/10 border-l-2 border-primary"
+                  : "hover:bg-white/5 border-l-2 border-transparent"
+              }`}
             >
-              <div className="flex items-center justify-between bg-bg-card border border-border rounded-2xl px-6 py-5 hover:border-primary/40 transition-all">
-                <div>
-                  <div className="flex items-center gap-3 mb-1">
-                    <span className="text-3xl">{cat.emoji}</span>
-                    <h2 className="text-xl md:text-2xl font-bold">
-                      {cat.name}
-                    </h2>
-                    <span className="bg-primary/20 text-primary-light text-xs font-semibold px-2.5 py-1 rounded-full">
-                      {cat.formulas.length}개
-                    </span>
-                  </div>
-                  <p className="text-text-sub text-sm ml-12">
-                    {cat.description}
-                  </p>
+              <div className="flex items-center justify-between">
+                <div className="flex items-center gap-3">
+                  <span className="text-lg">{cat.emoji}</span>
+                  <span
+                    className={`text-sm font-medium ${
+                      activeCategory === i ? "text-text-main" : "text-text-sub group-hover:text-text-main"
+                    }`}
+                  >
+                    {cat.name}
+                  </span>
                 </div>
                 <span
-                  className={`text-2xl text-text-muted transition-transform duration-300 ${
-                    openCategory === catIdx ? "rotate-180" : ""
+                  className={`text-xs font-mono ${
+                    activeCategory === i ? "text-primary" : "text-text-muted"
                   }`}
                 >
-                  ▼
+                  {cat.formulas.length}
                 </span>
               </div>
             </button>
+          ))}
+        </nav>
 
-            {openCategory === catIdx && (
-              <div className="mt-4 grid gap-3 animate-fade-in-up">
-                {cat.formulas.map((f) => (
-                  <div
-                    key={f.id}
-                    className="group bg-bg-card border border-border rounded-xl px-5 py-4 hover:border-primary/30 hover:bg-bg-card-hover transition-all"
-                  >
-                    <div className="flex items-start justify-between gap-4">
-                      <div className="flex-1">
-                        <div className="flex items-center gap-3 mb-2">
-                          <span className="text-xs text-text-muted font-mono bg-bg-dark px-2 py-0.5 rounded">
-                            #{f.id}
-                          </span>
-                          <span className="font-semibold text-text-main">
-                            {f.formula}
-                          </span>
-                        </div>
-                        <p className="text-text-sub text-sm ml-10">
-                          💡 {f.example}
-                        </p>
-                      </div>
-                      <button
-                        onClick={(e) => {
-                          e.stopPropagation();
-                          handleCopy(f.formula, f.id);
-                        }}
-                        className="shrink-0 mt-1 opacity-0 group-hover:opacity-100 transition-opacity bg-primary/20 hover:bg-primary/40 text-primary-light text-xs px-3 py-1.5 rounded-lg cursor-pointer"
-                      >
-                        {copiedId === f.id ? "✓ 복사됨" : "복사"}
-                      </button>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            )}
-          </div>
-        ))}
-      </section>
-
-      {/* CTA Banner */}
-      <section className="max-w-4xl mx-auto px-4 py-16">
-        <div className="bg-gradient-to-br from-primary/30 to-bg-card border border-primary/30 rounded-3xl px-8 py-12 text-center animate-pulse-glow">
-          <h2 className="text-2xl md:text-3xl font-bold mb-4">
-            공식만 알면 끝일까요?
-          </h2>
-          <p className="text-text-sub mb-2 text-lg">
-            후킹공식을 <strong className="text-text-main">병원 마케팅</strong>에
-            제대로 적용하는 방법이 있습니다.
-          </p>
-          <p className="text-text-muted mb-8">
-            500개 병원 마케팅 경험으로 만든 실전 강의를 확인하세요.
-          </p>
+        {/* Sidebar CTA */}
+        <div className="p-4 border-t border-border">
           <Link
             href="/landing"
-            className="inline-block bg-accent hover:bg-accent-dark text-bg-dark font-bold px-10 py-4 rounded-xl text-lg transition-all"
+            className="block w-full bg-primary hover:bg-primary-dark text-white text-sm font-semibold py-3 rounded-lg text-center transition-all"
           >
-            병원 마케팅 대행 강의 알아보기 →
+            실전 강의 알아보기
           </Link>
         </div>
-      </section>
+      </aside>
 
-      {/* Sticky CTA (mobile) */}
-      <div className="fixed bottom-0 left-0 right-0 bg-bg-dark/90 backdrop-blur-sm border-t border-border p-4 md:hidden z-50">
+      {/* Main Content */}
+      <main className="flex-1 lg:ml-0 min-h-screen">
+        {/* Hero Section */}
+        <section className="relative border-b border-border mt-14 lg:mt-0">
+          <div className="max-w-5xl mx-auto px-6 md:px-10 py-16 md:py-24">
+            <div className="flex items-center gap-3 mb-6">
+              <div className="h-px flex-1 bg-border max-w-16" />
+              <span className="text-[10px] font-bold tracking-[0.2em] text-text-muted uppercase">
+                250 Proven Formulas
+              </span>
+              <div className="h-px flex-1 bg-border max-w-16" />
+            </div>
+            <h2 className="text-3xl md:text-5xl lg:text-6xl font-extrabold leading-[1.1] mb-6">
+              클릭을 만드는 건
+              <br />
+              재능이 아니라{" "}
+              <span className="text-primary">공식</span>입니다
+            </h2>
+            <p className="text-text-sub text-base md:text-lg max-w-xl leading-relaxed mb-10">
+              쓰레드, 릴스, 숏폼에서 검증된 후킹 카피라이팅 공식 {totalFormulas}가지.
+              <br className="hidden md:block" />
+              복사해서 바로 쓰세요.
+            </p>
+            <div className="flex items-center gap-6">
+              <div className="flex items-center gap-2">
+                <div className="w-1.5 h-1.5 bg-primary rounded-full" />
+                <span className="text-sm text-text-muted">{categories.length}개 카테고리</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <div className="w-1.5 h-1.5 bg-primary rounded-full" />
+                <span className="text-sm text-text-muted">실전 예시 포함</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <div className="w-1.5 h-1.5 bg-primary rounded-full" />
+                <span className="text-sm text-text-muted">원클릭 복사</span>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Active Category Content */}
+        <section className="max-w-5xl mx-auto px-6 md:px-10 py-12">
+          {/* Category Header */}
+          <div className="flex items-center justify-between mb-8 pb-6 border-b border-border">
+            <div>
+              <div className="flex items-center gap-3 mb-2">
+                <span className="text-3xl">{activeCat.emoji}</span>
+                <h3 className="text-2xl md:text-3xl font-bold">{activeCat.name}</h3>
+              </div>
+              <p className="text-text-sub text-sm">{activeCat.description}</p>
+            </div>
+            <div className="hidden md:block text-right">
+              <span className="text-4xl font-bold text-border-light font-mono">
+                {String(activeCategory + 1).padStart(2, "0")}
+              </span>
+              <span className="text-sm text-text-muted block">
+                / {String(categories.length).padStart(2, "0")}
+              </span>
+            </div>
+          </div>
+
+          {/* Formula Cards */}
+          <div className="space-y-2 animate-fade-in-up" key={activeCategory}>
+            {activeCat.formulas.map((f, idx) => (
+              <div
+                key={f.id}
+                className="group relative bg-bg-card hover:bg-bg-card-hover border border-border hover:border-border-light rounded-lg px-5 py-4 transition-all duration-200 animate-slide-in"
+                style={{ animationDelay: `${idx * 20}ms` }}
+              >
+                <div className="flex items-start justify-between gap-4">
+                  <div className="flex-1 min-w-0">
+                    <div className="flex items-start gap-4">
+                      <span className="shrink-0 text-[11px] text-text-muted font-mono mt-0.5 w-7 text-right">
+                        {f.id}
+                      </span>
+                      <div className="flex-1 min-w-0">
+                        <p className="font-semibold text-text-main leading-relaxed">
+                          {f.formula}
+                        </p>
+                        <p className="text-text-sub text-sm mt-1.5 pl-0 border-l-2 border-primary/30 ml-0 pl-3">
+                          {f.example}
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                  <button
+                    onClick={() => handleCopy(f.formula, f.id)}
+                    className="shrink-0 mt-0.5 opacity-0 group-hover:opacity-100 transition-all bg-white/5 hover:bg-primary hover:text-white text-text-muted text-xs px-3 py-1.5 rounded cursor-pointer"
+                  >
+                    {copiedId === f.id ? "✓" : "복사"}
+                  </button>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          {/* Category Navigation */}
+          <div className="flex items-center justify-between mt-10 pt-8 border-t border-border">
+            <button
+              onClick={() => setActiveCategory(Math.max(0, activeCategory - 1))}
+              disabled={activeCategory === 0}
+              className="text-sm text-text-sub hover:text-text-main disabled:opacity-30 disabled:cursor-default transition-colors cursor-pointer"
+            >
+              ← 이전 카테고리
+            </button>
+            <div className="flex gap-1.5">
+              {categories.map((_, i) => (
+                <button
+                  key={i}
+                  onClick={() => setActiveCategory(i)}
+                  className={`w-2 h-2 rounded-full transition-all cursor-pointer ${
+                    i === activeCategory ? "bg-primary w-6" : "bg-border-light hover:bg-text-muted"
+                  }`}
+                />
+              ))}
+            </div>
+            <button
+              onClick={() =>
+                setActiveCategory(Math.min(categories.length - 1, activeCategory + 1))
+              }
+              disabled={activeCategory === categories.length - 1}
+              className="text-sm text-text-sub hover:text-text-main disabled:opacity-30 disabled:cursor-default transition-colors cursor-pointer"
+            >
+              다음 카테고리 →
+            </button>
+          </div>
+        </section>
+
+        {/* CTA Section */}
+        <section className="border-t border-border">
+          <div className="max-w-5xl mx-auto px-6 md:px-10 py-20">
+            <div className="relative overflow-hidden bg-bg-card border border-border rounded-2xl p-10 md:p-14">
+              <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-primary via-primary-light to-primary" />
+              <div className="relative">
+                <p className="text-[10px] font-bold tracking-[0.2em] text-primary uppercase mb-4">
+                  Next Step
+                </p>
+                <h2 className="text-2xl md:text-4xl font-bold mb-4 leading-snug">
+                  공식을 아는 것과
+                  <br />
+                  <span className="text-text-sub">적용하는 것은 다릅니다</span>
+                </h2>
+                <p className="text-text-sub max-w-lg mb-8 leading-relaxed">
+                  병원 마케팅에 이 공식들을 제대로 적용하는 방법.
+                  500개 병원 실전 경험으로 만든 강의에서 확인하세요.
+                </p>
+                <Link
+                  href="/landing"
+                  className="inline-flex items-center gap-2 bg-primary hover:bg-primary-dark text-white font-semibold px-8 py-4 rounded-lg transition-all"
+                >
+                  실전 강의 알아보기
+                  <svg width="16" height="16" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 12h15m0 0l-6.75-6.75M19.5 12l-6.75 6.75" />
+                  </svg>
+                </Link>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Footer */}
+        <footer className="border-t border-border">
+          <div className="max-w-5xl mx-auto px-6 md:px-10 py-8 flex items-center justify-between">
+            <p className="text-text-muted text-xs">
+              © 2026 Hooking Formula. All rights reserved.
+            </p>
+            <div className="flex items-center gap-1">
+              <div className="w-1.5 h-1.5 bg-primary rounded-full" />
+              <span className="text-xs text-text-muted">v1.0</span>
+            </div>
+          </div>
+        </footer>
+      </main>
+
+      {/* Mobile Bottom CTA */}
+      <div className="fixed bottom-0 left-0 right-0 bg-bg-dark/95 backdrop-blur-md border-t border-border p-4 lg:hidden z-30">
         <Link
           href="/landing"
-          className="block w-full bg-accent hover:bg-accent-dark text-bg-dark font-bold py-3.5 rounded-xl text-center text-lg transition-all"
+          className="block w-full bg-primary hover:bg-primary-dark text-white font-bold py-3.5 rounded-lg text-center transition-all"
         >
-          병원 마케팅 강의 무료 안내 받기
+          실전 강의 알아보기
         </Link>
       </div>
-
-      {/* Footer */}
-      <footer className="text-center py-8 text-text-muted text-sm border-t border-border mb-16 md:mb-0">
-        <p>© 2026 병원 마케팅 아카데미. All rights reserved.</p>
-      </footer>
     </div>
   );
 }
