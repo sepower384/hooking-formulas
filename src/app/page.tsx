@@ -122,14 +122,9 @@ export default function Home() {
           ))}
         </nav>
 
-        {/* Sidebar CTA */}
+        {/* Sidebar Footer */}
         <div className="p-4 border-t border-border">
-          <Link
-            href="/landing"
-            className="block w-full bg-primary hover:bg-primary-dark text-white text-sm font-semibold py-3 rounded-lg text-center transition-all"
-          >
-            실전 강의 알아보기
-          </Link>
+          <p className="text-xs text-text-muted text-center">© Marketing Lab</p>
         </div>
       </aside>
 
@@ -140,7 +135,7 @@ export default function Home() {
           <div className="max-w-5xl mx-auto px-6 md:px-10 py-16 md:py-24">
             <div className="flex items-center gap-3 mb-6">
               <div className="h-px flex-1 bg-border max-w-16" />
-              <span className="text-[10px] font-bold tracking-[0.2em] text-text-muted uppercase">
+              <span className="text-xs font-bold tracking-[0.2em] text-text-muted uppercase">
                 120억 매출 마케팅 회사가 공개하는
               </span>
               <div className="h-px flex-1 bg-border max-w-16" />
@@ -159,15 +154,15 @@ export default function Home() {
             <div className="flex items-center gap-6">
               <div className="flex items-center gap-2">
                 <div className="w-1.5 h-1.5 bg-primary rounded-full" />
-                <span className="text-sm text-text-muted">{categories.length}개 카테고리</span>
+                <span className="text-base text-text-muted">{categories.length}개 카테고리</span>
               </div>
               <div className="flex items-center gap-2">
                 <div className="w-1.5 h-1.5 bg-primary rounded-full" />
-                <span className="text-sm text-text-muted">실전 예시 포함</span>
+                <span className="text-base text-text-muted">실전 예시 포함</span>
               </div>
               <div className="flex items-center gap-2">
                 <div className="w-1.5 h-1.5 bg-primary rounded-full" />
-                <span className="text-sm text-text-muted">원클릭 복사</span>
+                <span className="text-base text-text-muted">원클릭 복사</span>
               </div>
             </div>
           </div>
@@ -182,7 +177,7 @@ export default function Home() {
                 <span className="text-3xl">{activeCat.emoji}</span>
                 <h3 className="text-2xl md:text-3xl font-bold">{activeCat.name}</h3>
               </div>
-              <p className="text-text-sub text-sm">{activeCat.description}</p>
+              <p className="text-text-sub text-base">{activeCat.description}</p>
             </div>
             <div className="hidden md:block text-right">
               <span className="text-4xl font-bold text-border-light font-mono">
@@ -205,14 +200,14 @@ export default function Home() {
                 <div className="flex items-start justify-between gap-4">
                   <div className="flex-1 min-w-0">
                     <div className="flex items-start gap-4">
-                      <span className="shrink-0 text-[11px] text-text-muted font-mono mt-0.5 w-7 text-right">
+                      <span className="shrink-0 text-xs text-text-muted font-mono mt-0.5 w-7 text-right">
                         {f.id}
                       </span>
                       <div className="flex-1 min-w-0">
                         <p className="font-semibold text-text-main leading-relaxed">
                           {f.formula}
                         </p>
-                        <p className="text-text-sub text-sm mt-1.5 pl-0 border-l-2 border-primary/30 ml-0 pl-3">
+                        <p className="text-text-sub text-base mt-1.5 border-l-2 border-primary/30 pl-3">
                           {f.example}
                         </p>
                       </div>
@@ -283,12 +278,12 @@ export default function Home() {
               <div className="p-8 md:p-12">
                 <div className="flex items-center gap-3 mb-6">
                   <div className="w-1 h-8 bg-primary rounded-full" />
-                  <p className="text-xs font-medium text-text-muted tracking-wide">
+                  <p className="text-sm font-medium text-text-muted tracking-wide">
                     저희가 하는 일에 대해 잠깐 소개드립니다
                   </p>
                 </div>
 
-                <div className="max-w-2xl space-y-5 text-text-sub leading-relaxed">
+                <div className="max-w-2xl space-y-5 text-text-sub text-base leading-relaxed">
                   <p>
                     저희는{" "}
                     <span className="text-text-main font-medium">
@@ -310,7 +305,7 @@ export default function Home() {
                     <br className="hidden md:block" />
                     실전 위주로 교육하고 있습니다.
                   </p>
-                  <p className="text-text-muted text-sm pt-2">
+                  <p className="text-text-muted text-base pt-2">
                     억지로 권하진 않겠습니다.
                     <br />
                     다만, 조금이라도 궁금하신 분들만 아래에서 확인해주세요.
@@ -320,14 +315,14 @@ export default function Home() {
                 <div className="mt-10 pt-8 border-t border-border flex flex-col sm:flex-row items-start sm:items-center gap-4">
                   <Link
                     href="/landing"
-                    className="inline-flex items-center gap-2 bg-primary hover:bg-primary-dark text-white font-semibold px-7 py-3.5 rounded-lg transition-all text-sm"
+                    className="inline-flex items-center gap-2 bg-primary hover:bg-primary-dark text-white font-semibold px-7 py-3.5 rounded-lg transition-all text-base"
                   >
                     어떤 교육인지 확인해보기
                     <svg width="14" height="14" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 12h15m0 0l-6.75-6.75M19.5 12l-6.75 6.75" />
                     </svg>
                   </Link>
-                  <span className="text-text-muted text-xs">
+                  <span className="text-text-muted text-sm">
                     무료로 안내만 받아보실 수 있습니다
                   </span>
                 </div>
