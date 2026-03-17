@@ -287,7 +287,7 @@ export default function Home() {
                   <p>
                     저희는{" "}
                     <span className="text-text-main font-medium">
-                      연 매출 120억 규모의 병원 마케팅 전문 회사
+                      연 매출 100억을 넘긴 마케팅 전문 대행사
                     </span>
                     입니다.
                   </p>
