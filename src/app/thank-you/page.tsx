@@ -5,7 +5,7 @@ import Link from "next/link";
 
 export default function ThankYouPage() {
   // TODO: 실제 카카오톡 오픈채팅방 URL로 교체
-  const kakaoOpenChatUrl = "https://open.kakao.com/o/gXXXXXXX";
+  const kakaoOpenChatUrl = "https://open.kakao.com/o/gmN3ddii";
 
   // 3초 후 자동 리다이렉트 (원하면 활성화)
   // useEffect(() => {
