@@ -98,11 +98,11 @@ export default function LandingPage() {
             월 200 버는 법
           </h1>
           <p className="text-text-sub text-base md:text-lg max-w-xl mx-auto leading-relaxed mb-10">
-            마케팅 경험 0, 인맥 0, 자본금 0에서 시작해도 됩니다.
+            <span className="text-text-main font-medium">연 매출 120억</span> 병원 마케팅 회사가
             <br />
-            왕초보가 병원 마케팅 대행을 부업으로 시작하는
+            마케팅 경험 0, 인맥 0, 자본금 0인 왕초보도
             <br className="hidden md:block" />
-            구체적인 로드맵을 무료로 공개합니다.
+            병원 마케팅 대행을 부업으로 시작하는 로드맵을 무료 공개합니다.
           </p>
           <a
             href="#signup"
@@ -190,7 +190,7 @@ export default function LandingPage() {
             이 무료 강의에서 알려드리는 것
           </h2>
           <p className="text-text-muted text-sm mb-10">
-            3월 17일 (월) 저녁 7:30 · 약 60분 · LIVE 진행
+            3월 17일 (월) 저녁 7:30 · 약 2~3시간 · LIVE 진행
           </p>
           <div className="space-y-3">
             {[

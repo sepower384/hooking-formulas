@@ -141,7 +141,7 @@ export default function Home() {
             <div className="flex items-center gap-3 mb-6">
               <div className="h-px flex-1 bg-border max-w-16" />
               <span className="text-[10px] font-bold tracking-[0.2em] text-text-muted uppercase">
-                250 Proven Formulas
+                120억 매출 마케팅 회사가 공개하는
               </span>
               <div className="h-px flex-1 bg-border max-w-16" />
             </div>
@@ -292,7 +292,7 @@ export default function Home() {
                   <p>
                     저희는{" "}
                     <span className="text-text-main font-medium">
-                      병원 마케팅을 전문으로 하고 있는 회사
+                      연 매출 120억 규모의 병원 마케팅 전문 회사
                     </span>
                     입니다.
                   </p>

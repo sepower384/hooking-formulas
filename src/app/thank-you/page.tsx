@@ -77,7 +77,7 @@ export default function ThankYouPage() {
             <div className="h-px bg-border" />
             <div className="flex items-center justify-between">
               <span className="text-text-muted">소요 시간</span>
-              <span className="text-text-main font-medium">약 60분</span>
+              <span className="text-text-main font-medium">약 2~3시간</span>
             </div>
             <div className="h-px bg-border" />
             <div className="flex items-center justify-between">
