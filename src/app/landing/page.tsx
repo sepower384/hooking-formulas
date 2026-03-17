@@ -41,8 +41,15 @@ export default function LandingPage() {
     }
 
     setIsSubmitting(true);
-    // TODO: 실제 API 연동 (Google Sheets, Supabase 등)
-    await new Promise((resolve) => setTimeout(resolve, 1000));
+    try {
+      await fetch("/api/submit", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(form),
+      });
+    } catch {
+      // 저장 실패해도 사용자 흐름은 유지
+    }
     setIsSubmitting(false);
     router.push("/thank-you");
   };
