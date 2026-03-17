@@ -261,33 +261,76 @@ export default function Home() {
           </div>
         </section>
 
-        {/* CTA Section */}
+        {/* Funnel Section */}
         <section className="border-t border-border">
           <div className="max-w-5xl mx-auto px-6 md:px-10 py-20">
-            <div className="relative overflow-hidden bg-bg-card border border-border rounded-2xl p-10 md:p-14">
-              <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-primary via-primary-light to-primary" />
-              <div className="relative">
-                <p className="text-[10px] font-bold tracking-[0.2em] text-primary uppercase mb-4">
-                  Next Step
-                </p>
-                <h2 className="text-2xl md:text-4xl font-bold mb-4 leading-snug">
-                  공식을 아는 것과
-                  <br />
-                  <span className="text-text-sub">적용하는 것은 다릅니다</span>
-                </h2>
-                <p className="text-text-sub max-w-lg mb-8 leading-relaxed">
-                  병원 마케팅에 이 공식들을 제대로 적용하는 방법.
-                  500개 병원 실전 경험으로 만든 강의에서 확인하세요.
-                </p>
-                <Link
-                  href="/landing"
-                  className="inline-flex items-center gap-2 bg-primary hover:bg-primary-dark text-white font-semibold px-8 py-4 rounded-lg transition-all"
-                >
-                  실전 강의 알아보기
-                  <svg width="16" height="16" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 12h15m0 0l-6.75-6.75M19.5 12l-6.75 6.75" />
-                  </svg>
-                </Link>
+            {/* Thank you note */}
+            <div className="mb-16">
+              <p className="text-text-sub leading-relaxed max-w-2xl">
+                여기까지 읽어주셨다면, 콘텐츠 마케팅에 진심이신 분이라고 생각합니다.
+                <br className="hidden md:block" />
+                위 공식들은 저희가 실제 현장에서 쓰고 있는 공식 그대로입니다.
+                <br className="hidden md:block" />
+                마음껏 가져가셔서 쓰레드, 릴스, 숏폼에 바로 적용해보세요.
+              </p>
+            </div>
+
+            {/* About + CTA */}
+            <div className="bg-bg-card border border-border rounded-2xl overflow-hidden">
+              {/* Top line */}
+              <div className="h-px bg-gradient-to-r from-transparent via-primary/40 to-transparent" />
+
+              <div className="p-8 md:p-12">
+                <div className="flex items-center gap-3 mb-6">
+                  <div className="w-1 h-8 bg-primary rounded-full" />
+                  <p className="text-xs font-medium text-text-muted tracking-wide">
+                    저희가 하는 일에 대해 잠깐 소개드립니다
+                  </p>
+                </div>
+
+                <div className="max-w-2xl space-y-5 text-text-sub leading-relaxed">
+                  <p>
+                    저희는{" "}
+                    <span className="text-text-main font-medium">
+                      병원 마케팅을 전문으로 하고 있는 회사
+                    </span>
+                    입니다.
+                  </p>
+                  <p>
+                    지금까지 수백 개 병원의 마케팅을 대행하면서 쌓은 노하우를 바탕으로,
+                    <br className="hidden md:block" />
+                    요즘은 하나의 교육 프로그램을 운영하고 있습니다.
+                  </p>
+                  <p>
+                    <span className="text-text-main">
+                      마케팅 경험이 전혀 없는 왕초보도,
+                    </span>
+                    <br className="hidden md:block" />
+                    처음부터 시작해서 병원을 상대로 마케팅 대행을 부업으로 시작할 수 있도록
+                    <br className="hidden md:block" />
+                    실전 위주로 교육하고 있습니다.
+                  </p>
+                  <p className="text-text-muted text-sm pt-2">
+                    억지로 권하진 않겠습니다.
+                    <br />
+                    다만, 조금이라도 궁금하신 분들만 아래에서 확인해주세요.
+                  </p>
+                </div>
+
+                <div className="mt-10 pt-8 border-t border-border flex flex-col sm:flex-row items-start sm:items-center gap-4">
+                  <Link
+                    href="/landing"
+                    className="inline-flex items-center gap-2 bg-primary hover:bg-primary-dark text-white font-semibold px-7 py-3.5 rounded-lg transition-all text-sm"
+                  >
+                    어떤 교육인지 확인해보기
+                    <svg width="14" height="14" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 12h15m0 0l-6.75-6.75M19.5 12l-6.75 6.75" />
+                    </svg>
+                  </Link>
+                  <span className="text-text-muted text-xs">
+                    무료로 안내만 받아보실 수 있습니다
+                  </span>
+                </div>
               </div>
             </div>
           </div>
