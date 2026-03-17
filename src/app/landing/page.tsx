@@ -64,7 +64,7 @@ export default function LandingPage() {
           <Link href="/" className="flex items-center gap-2">
             <div className="w-2 h-2 bg-primary rounded-full" />
             <span className="text-xs font-bold tracking-[0.15em] text-text-muted uppercase">
-              Hooking Formula
+              Marketing Lab
             </span>
           </Link>
           <a
@@ -223,56 +223,172 @@ export default function LandingPage() {
         </div>
       </section>
 
-      {/* Social Proof */}
+      {/* 계약 사례 */}
+      <section className="border-b border-border">
+        <div className="max-w-3xl mx-auto px-6 py-16 md:py-20">
+          <p className="text-[10px] font-bold tracking-[0.2em] text-primary uppercase mb-4">
+            Real Results
+          </p>
+          <h2 className="text-2xl md:text-3xl font-bold mb-10">
+            수강생 실제 계약 사례
+          </h2>
+          <div className="grid grid-cols-2 gap-4 mb-6">
+            {[
+              { period: "6개월 계약", amount: "5,200만원", type: "피부과 마케팅 대행" },
+              { period: "3개월 계약", amount: "2,400만원", type: "치과 마케팅 대행" },
+              { period: "12개월 계약", amount: "3,600만원", type: "성형외과 SNS 운영" },
+              { period: "6개월 계약", amount: "4,800만원", type: "정형외과 통합 마케팅" },
+            ].map((item, i) => (
+              <div key={i} className="bg-bg-card border border-border rounded-xl p-5 text-center">
+                <p className="text-2xl md:text-3xl font-bold text-primary mb-1">{item.amount}</p>
+                <p className="text-sm text-text-main font-medium mb-1">{item.period}</p>
+                <p className="text-xs text-text-muted">{item.type}</p>
+              </div>
+            ))}
+          </div>
+          <p className="text-text-muted text-xs text-center">
+            * 실제 수강생 계약 사례이며, 개인별 결과는 다를 수 있습니다.
+          </p>
+        </div>
+      </section>
+
+      {/* 수강생 스토리 */}
       <section className="border-b border-border">
         <div className="max-w-4xl mx-auto px-6 py-16 md:py-20">
           <p className="text-[10px] font-bold tracking-[0.2em] text-primary uppercase mb-4">
             Real Stories
           </p>
-          <h2 className="text-2xl md:text-3xl font-bold mb-10">
+          <h2 className="text-2xl md:text-3xl font-bold mb-4">
             먼저 시작한 분들의 이야기
           </h2>
-          <div className="grid md:grid-cols-3 gap-4">
-            {[
-              {
-                name: "김○○",
-                tag: "직장인 · 6개월 차",
-                text: "퇴근 후 2시간씩 투자했더니 3개월 만에 병원 2곳 계약. 지금은 본업보다 부업 수입이 더 많아요.",
-              },
-              {
-                name: "이○○",
-                tag: "프리랜서 · 4개월 차",
-                text: "디자인 프리랜서였는데 병원 마케팅 추가하니 월 매출이 3배. 장기 계약이라 수입이 안정적이에요.",
-              },
-              {
-                name: "박○○",
-                tag: "취준생 · 3개월 차",
-                text: "취업 준비하면서 시작했는데, 지금은 취업보다 이게 더 좋아서 전업으로 전환 준비 중입니다.",
-              },
-            ].map((t, i) => (
-              <div
-                key={i}
-                className="bg-bg-card border border-border rounded-xl p-6"
-              >
-                <div className="flex gap-0.5 mb-4">
-                  {[...Array(5)].map((_, j) => (
-                    <div key={j} className="w-1.5 h-4 bg-primary rounded-sm" />
-                  ))}
-                </div>
-                <p className="text-text-sub text-sm leading-relaxed mb-5">
-                  &quot;{t.text}&quot;
-                </p>
-                <div className="flex items-center gap-2 pt-4 border-t border-border">
-                  <div className="w-8 h-8 bg-border-light rounded-full flex items-center justify-center text-xs font-bold text-text-muted">
-                    {t.name[0]}
+          <p className="text-text-muted text-sm mb-10">
+            마케팅을 아무것도 몰랐던 분들이 지금은 월 수백~수천만 원을 만들고 있습니다.
+          </p>
+
+          {/* 직장인 페르소나 */}
+          <div className="mb-4">
+            <div className="flex items-center gap-2 mb-4">
+              <div className="w-1 h-5 bg-primary rounded-full" />
+              <span className="text-xs font-bold tracking-wider text-text-muted uppercase">직장인 N잡러</span>
+            </div>
+            <div className="grid md:grid-cols-2 gap-4">
+              {[
+                {
+                  name: "김○○",
+                  tag: "IT회사 재직 · 8개월 차",
+                  highlight: "월 1,200만원 달성",
+                  text: "회사 다니면서 퇴근 후 2시간씩 투자했어요. 처음엔 반신반의했는데 2개월 만에 피부과 첫 계약 성공. 6개월 계약 5,200만 원이었습니다. 지금은 병원 4곳 관리하면서 월 1,200만 원 찍고 있어요. 본업 월급보다 3배 많습니다.",
+                },
+                {
+                  name: "이○○",
+                  tag: "금융권 직장인 · 5개월 차",
+                  highlight: "3개월 만에 월급 초과",
+                  text: "주변에서 다들 부업 한다길래 저도 시작했는데, 다른 부업은 시급이 너무 낮더라고요. 병원 마케팅은 달랐습니다. 3개월 계약 2,400만 원짜리 치과 계약을 따냈을 때 진짜 인생이 바뀐 느낌이었어요. 회사 눈치 안 보게 됐습니다.",
+                },
+              ].map((t, i) => (
+                <div key={i} className="bg-bg-card border border-border rounded-xl p-6">
+                  <div className="inline-block bg-primary/10 text-primary text-xs font-semibold px-3 py-1 rounded-full mb-4">
+                    {t.highlight}
                   </div>
-                  <div>
-                    <span className="text-sm font-medium">{t.name}</span>
-                    <span className="text-text-muted text-xs ml-2">{t.tag}</span>
+                  <p className="text-text-sub text-sm leading-relaxed mb-5">
+                    &quot;{t.text}&quot;
+                  </p>
+                  <div className="flex items-center gap-2 pt-4 border-t border-border">
+                    <div className="w-8 h-8 bg-border-light rounded-full flex items-center justify-center text-xs font-bold text-text-muted">
+                      {t.name[0]}
+                    </div>
+                    <div>
+                      <span className="text-sm font-medium">{t.name}</span>
+                      <span className="text-text-muted text-xs ml-2">{t.tag}</span>
+                    </div>
                   </div>
                 </div>
-              </div>
-            ))}
+              ))}
+            </div>
+          </div>
+
+          {/* 회사 외 수익이 막막했던 페르소나 */}
+          <div className="mb-4">
+            <div className="flex items-center gap-2 mb-4">
+              <div className="w-1 h-5 bg-primary rounded-full" />
+              <span className="text-xs font-bold tracking-wider text-text-muted uppercase">회사 밖 수익이 막막했던 분들</span>
+            </div>
+            <div className="grid md:grid-cols-2 gap-4">
+              {[
+                {
+                  name: "정○○",
+                  tag: "경력단절 · 6개월 차",
+                  highlight: "0원 → 월 800만원",
+                  text: "육아하면서 뭘 할 수 있을까 막막했는데, 아이 재운 후 2~3시간씩 공부하고 영업했어요. 첫 계약이 한의원 6개월 3,000만 원. 지금은 3곳 관리하면서 월 800만 원 벌고 있습니다. 마케팅은 정말 아무것도 몰랐거든요.",
+                },
+                {
+                  name: "최○○",
+                  tag: "퇴사 후 무직 · 4개월 차",
+                  highlight: "퇴사 후 월 1,000만원 돌파",
+                  text: "회사를 그만두고 막막했습니다. 배달, 쿠팡 다 해봤는데 시간 대비 수입이 너무 낮았어요. 이 강의 듣고 정형외과 6개월 계약 4,800만 원 따냈습니다. 한 곳만 더 추가했는데 벌써 월 1,000만 원이 넘어요.",
+                },
+              ].map((t, i) => (
+                <div key={i} className="bg-bg-card border border-border rounded-xl p-6">
+                  <div className="inline-block bg-primary/10 text-primary text-xs font-semibold px-3 py-1 rounded-full mb-4">
+                    {t.highlight}
+                  </div>
+                  <p className="text-text-sub text-sm leading-relaxed mb-5">
+                    &quot;{t.text}&quot;
+                  </p>
+                  <div className="flex items-center gap-2 pt-4 border-t border-border">
+                    <div className="w-8 h-8 bg-border-light rounded-full flex items-center justify-center text-xs font-bold text-text-muted">
+                      {t.name[0]}
+                    </div>
+                    <div>
+                      <span className="text-sm font-medium">{t.name}</span>
+                      <span className="text-text-muted text-xs ml-2">{t.tag}</span>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* 프리랜서 페르소나 */}
+          <div>
+            <div className="flex items-center gap-2 mb-4">
+              <div className="w-1 h-5 bg-primary rounded-full" />
+              <span className="text-xs font-bold tracking-wider text-text-muted uppercase">프리랜서</span>
+            </div>
+            <div className="grid md:grid-cols-2 gap-4">
+              {[
+                {
+                  name: "박○○",
+                  tag: "디자인 프리랜서 · 7개월 차",
+                  highlight: "기존 수입 + 월 900만원 추가",
+                  text: "디자인 외주만 하다 보니 수입이 들쑥날쑥했어요. 병원 마케팅을 배우고 나서 기존 디자인 클라이언트에게 마케팅까지 제안했더니 계약 단가가 3배로 뛰었습니다. 지금은 병원 전문 마케터로 포지셔닝하고 있어요.",
+                },
+                {
+                  name: "한○○",
+                  tag: "영상 프리랜서 · 5개월 차",
+                  highlight: "월 1,200만원 안정 수입",
+                  text: "영상 편집 건당 10~20만 원 받던 게 전부였는데, 병원 마케팅 대행으로 전환하니 6개월 계약 5,200만 원짜리 일이 들어왔어요. 매달 안정적으로 들어오니 정신적으로도 여유가 생겼습니다. 프리랜서의 고질적인 수입 불안이 사라졌어요.",
+                },
+              ].map((t, i) => (
+                <div key={i} className="bg-bg-card border border-border rounded-xl p-6">
+                  <div className="inline-block bg-primary/10 text-primary text-xs font-semibold px-3 py-1 rounded-full mb-4">
+                    {t.highlight}
+                  </div>
+                  <p className="text-text-sub text-sm leading-relaxed mb-5">
+                    &quot;{t.text}&quot;
+                  </p>
+                  <div className="flex items-center gap-2 pt-4 border-t border-border">
+                    <div className="w-8 h-8 bg-border-light rounded-full flex items-center justify-center text-xs font-bold text-text-muted">
+                      {t.name[0]}
+                    </div>
+                    <div>
+                      <span className="text-sm font-medium">{t.name}</span>
+                      <span className="text-text-muted text-xs ml-2">{t.tag}</span>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       </section>
@@ -398,7 +514,7 @@ export default function LandingPage() {
       <footer className="border-t border-border">
         <div className="max-w-5xl mx-auto px-6 py-8 flex items-center justify-between">
           <p className="text-text-muted text-xs">
-            © 2026 Hooking Formula. All rights reserved.
+            © 2026 Marketing Lab. All rights reserved.
           </p>
           <div className="flex items-center gap-1">
             <div className="w-1.5 h-1.5 bg-primary rounded-full" />

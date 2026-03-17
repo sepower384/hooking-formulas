@@ -91,7 +91,7 @@ export default function ThankYouPage() {
           href="/"
           className="flex items-center justify-center gap-2 text-text-muted text-sm hover:text-text-sub transition-colors"
         >
-          ← 후킹공식 250가지로 돌아가기
+          ← 카피라이팅 공식집으로 돌아가기
         </Link>
       </div>
     </div>

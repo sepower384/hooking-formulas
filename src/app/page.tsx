@@ -28,8 +28,8 @@ export default function Home() {
       <div className="fixed top-0 left-0 right-0 bg-bg-dark/95 backdrop-blur-md border-b border-border z-50 lg:hidden">
         <div className="flex items-center justify-between px-5 py-4">
           <div>
-            <span className="text-primary font-bold text-sm tracking-widest">HOOKING</span>
-            <span className="text-text-muted text-sm ml-1">FORMULA</span>
+            <span className="text-primary font-bold text-sm tracking-widest">MARKETING</span>
+            <span className="text-text-muted text-sm ml-1">LAB</span>
           </div>
           <button
             onClick={() => setSidebarOpen(!sidebarOpen)}
@@ -65,13 +65,13 @@ export default function Home() {
           <div className="flex items-center gap-2 mb-1">
             <div className="w-2 h-2 bg-primary rounded-full" />
             <span className="text-xs font-bold tracking-[0.2em] text-text-muted uppercase">
-              Hooking Formula
+              Marketing Lab
             </span>
           </div>
           <h1 className="text-lg font-bold leading-snug mt-3">
             쓰레드/릴스
             <br />
-            <span className="text-primary">후킹 카피라이팅</span>
+            <span className="text-primary">카피라이팅</span>
             <br />
             공식집
           </h1>
@@ -340,7 +340,7 @@ export default function Home() {
         <footer className="border-t border-border">
           <div className="max-w-5xl mx-auto px-6 md:px-10 py-8 flex items-center justify-between">
             <p className="text-text-muted text-xs">
-              © 2026 Hooking Formula. All rights reserved.
+              © 2026 Marketing Lab. All rights reserved.
             </p>
             <div className="flex items-center gap-1">
               <div className="w-1.5 h-1.5 bg-primary rounded-full" />
